@@ -3,255 +3,245 @@ import { ObjectId } from "mongodb";
 import { connect, getDB } from "./config.js";
 
 async function seed() {
-  // id para referenciar
+  // ids for reference
   const userIds = {
-    juan: new ObjectId(),
-    maria: new ObjectId(),
-    carlos: new ObjectId(),
-    ana: new ObjectId(),
-    sofia: new ObjectId(),
+    john: new ObjectId(),
+    mary: new ObjectId(),
+    charles: new ObjectId(),
+    anna: new ObjectId(),
+    sophia: new ObjectId(),
   };
 
   const recipeIds = {
-    polloHorno: new ObjectId(),
-    ensaladaCesar: new ObjectId(),
-    tacosPollo: new ObjectId(),
-    pastaPesto: new ObjectId(),
-    arepasRellenas: new ObjectId(),
-    sopaVerduras: new ObjectId(),
-    arrozPollo: new ObjectId(),
+    bakedChicken: new ObjectId(),
+    caesarSalad: new ObjectId(),
+    chickenTacos: new ObjectId(),
+    pestoPasta: new ObjectId(),
+    stuffedArepas: new ObjectId(),
+    vegetableSoup: new ObjectId(),
+    chickenRice: new ObjectId(),
     brownies: new ObjectId(),
-    cevicheCamaron: new ObjectId(),
-    panquequesAvena: new ObjectId(),
+    shrimpCeviche: new ObjectId(),
+    oatmealPancakes: new ObjectId(),
   };
 
   const now = new Date();
 
-  const usuarios = [
+  const users = [
     {
-      _id: userIds.juan,
-      nombreCompleto: "Juan Pérez",
-      username: "juanperez",
-      email: "juan.perez@gmail.com",
+      _id: userIds.john,
+      fullName: "John Perez",
+      username: "johnperez",
+      email: "john.perez@gmail.com",
       createdAt: now,
     },
     {
-      _id: userIds.maria,
-      nombreCompleto: "María Gómez",
-      username: "mariag",
-      email: "maria.gomez@gmail.com",
+      _id: userIds.mary,
+      fullName: "Mary Gomez",
+      username: "maryg",
+      email: "mary.gomez@gmail.com",
       createdAt: now,
     },
     {
-      _id: userIds.carlos,
-      nombreCompleto: "Carlos Ruiz",
-      username: "carlitos",
-      email: "carlos.ruiz@gmail.com",
+      _id: userIds.charles,
+      fullName: "Charles Ruiz",
+      username: "charlie",
+      email: "charles.ruiz@gmail.com",
       createdAt: now,
     },
     {
-      _id: userIds.ana,
-      nombreCompleto: "Ana López",
-      username: "analopez",
-      email: "ana.lopez@gmail.com",
+      _id: userIds.anna,
+      fullName: "Anna Lopez",
+      username: "annalopez",
+      email: "anna.lopez@gmail.com",
       createdAt: now,
     },
     {
-      _id: userIds.sofia,
-      nombreCompleto: "Sofía Martínez",
-      username: "sofimm",
-      email: "sofia.martinez@gmail.com",
+      _id: userIds.sophia,
+      fullName: "Sophia Martinez",
+      username: "sophiamm",
+      email: "sophia.martinez@gmail.com",
       createdAt: now,
     },
   ];
 
-  const recetas = [
+  const recipes = [
     {
-      _id: recipeIds.polloHorno,
-      userId: userIds.juan,
-      titulo: "Pollo al Horno con Papas",
-      descripcion:
-        "Pollo marinado con ajo y limón, horneado con papas y romero.",
+      _id: recipeIds.bakedChicken,
+      userId: userIds.john,
+      title: "Baked Chicken with Potatoes",
+      description: "Chicken marinated with garlic and lemon, baked with potatoes and rosemary.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.ensaladaCesar,
-      userId: userIds.maria,
-      titulo: "Ensalada César",
-      descripcion:
-        "Clásica ensalada con lechuga romana, crutones y aderezo cremoso.",
+      _id: recipeIds.caesarSalad,
+      userId: userIds.mary,
+      title: "Caesar Salad",
+      description: "Classic salad with romaine lettuce, croutons, and creamy dressing.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.tacosPollo,
-      userId: userIds.carlos,
-      titulo: "Tacos de Pollo",
-      descripcion:
-        "Tortillas de maíz rellenas con pollo sazonado, pico de gallo y aguacate.",
+      _id: recipeIds.chickenTacos,
+      userId: userIds.charles,
+      title: "Chicken Tacos",
+      description: "Corn tortillas filled with seasoned chicken, pico de gallo, and avocado.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.pastaPesto,
-      userId: userIds.ana,
-      titulo: "Pasta al Pesto",
-      descripcion:
-        "Fusilli con pesto de albahaca, parmesano y piñones tostados.",
+      _id: recipeIds.pestoPasta,
+      userId: userIds.anna,
+      title: "Pesto Pasta",
+      description: "Fusilli with basil pesto, parmesan, and toasted pine nuts.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.arepasRellenas,
-      userId: userIds.sofia,
-      titulo: "Arepas Rellenas",
-      descripcion:
-        "Arepas de maíz rellenas de queso y hogao, perfectas para el desayuno.",
+      _id: recipeIds.stuffedArepas,
+      userId: userIds.sophia,
+      title: "Stuffed Arepas",
+      description: "Corn arepas stuffed with cheese and hogao, perfect for breakfast.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.sopaVerduras,
-      userId: userIds.juan,
-      titulo: "Sopa de Verduras",
-      descripcion:
-        "Caldo ligero con zanahoria, apio, papa y calabacín, sazonado con laurel.",
+      _id: recipeIds.vegetableSoup,
+      userId: userIds.john,
+      title: "Vegetable Soup",
+      description: "Light broth with carrot, celery, potato, and zucchini, seasoned with bay leaf.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.arrozPollo,
-      userId: userIds.maria,
-      titulo: "Arroz con Pollo",
-      descripcion:
-        "Arroz amarillo con pollo desmechado, verduras y cilantro.",
+      _id: recipeIds.chickenRice,
+      userId: userIds.mary,
+      title: "Chicken Rice",
+      description: "Yellow rice with shredded chicken, vegetables, and cilantro.",
       createdAt: now,
       updatedAt: now,
     },
     {
       _id: recipeIds.brownies,
-      userId: userIds.carlos,
-      titulo: "Brownies de Chocolate",
-      descripcion:
-        "Brownies húmedos de chocolate con nueces, ideales para postre.",
+      userId: userIds.charles,
+      title: "Chocolate Brownies",
+      description: "Moist chocolate brownies with nuts, perfect for dessert.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.cevicheCamaron,
-      userId: userIds.ana,
-      titulo: "Ceviche de Camarón",
-      descripcion:
-        "Camarones marinados en jugo de limón con cebolla morada y cilantro.",
+      _id: recipeIds.shrimpCeviche,
+      userId: userIds.anna,
+      title: "Shrimp Ceviche",
+      description: "Shrimp marinated in lime juice with red onion and cilantro.",
       createdAt: now,
       updatedAt: now,
     },
     {
-      _id: recipeIds.panquequesAvena,
-      userId: userIds.sofia,
-      titulo: "Panqueques de Avena",
-      descripcion:
-        "Panqueques saludables de avena y banano, perfectos con miel.",
+      _id: recipeIds.oatmealPancakes,
+      userId: userIds.sophia,
+      title: "Oatmeal Pancakes",
+      description: "Healthy oatmeal and banana pancakes, perfect with honey.",
       createdAt: now,
       updatedAt: now,
     },
   ];
 
-  const ingredientes = [
-    // Pollo al Horno con Papas
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "pollo" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "papas" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "ajo" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "limón" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "romero" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "sal" },
-    { _id: new ObjectId(), recipeId: recipeIds.polloHorno, nombre: "pimienta" },
+  const ingredients = [
+    // Baked Chicken with Potatoes
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "chicken" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "potatoes" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "garlic" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "lemon" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "rosemary" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "salt" },
+    { _id: new ObjectId(), recipeId: recipeIds.bakedChicken, name: "pepper" },
 
-    // Ensalada César
-    { _id: new ObjectId(), recipeId: recipeIds.ensaladaCesar, nombre: "lechuga romana" },
-    { _id: new ObjectId(), recipeId: recipeIds.ensaladaCesar, nombre: "crutones" },
-    { _id: new ObjectId(), recipeId: recipeIds.ensaladaCesar, nombre: "parmesano" },
-    { _id: new ObjectId(), recipeId: recipeIds.ensaladaCesar, nombre: "pechuga de pollo" },
-    { _id: new ObjectId(), recipeId: recipeIds.ensaladaCesar, nombre: "aderezo césar" },
+    // Caesar Salad
+    { _id: new ObjectId(), recipeId: recipeIds.caesarSalad, name: "romaine lettuce" },
+    { _id: new ObjectId(), recipeId: recipeIds.caesarSalad, name: "croutons" },
+    { _id: new ObjectId(), recipeId: recipeIds.caesarSalad, name: "parmesan" },
+    { _id: new ObjectId(), recipeId: recipeIds.caesarSalad, name: "chicken breast" },
+    { _id: new ObjectId(), recipeId: recipeIds.caesarSalad, name: "caesar dressing" },
 
-    // Tacos de Pollo
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "pollo" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "tortillas de maíz" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "cebolla" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "tomate" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "aguacate" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "cilantro" },
-    { _id: new ObjectId(), recipeId: recipeIds.tacosPollo, nombre: "limón" },
+    // Chicken Tacos
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "chicken" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "corn tortillas" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "onion" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "tomato" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "avocado" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "cilantro" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenTacos, name: "lime" },
 
-    // Pasta al Pesto
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "pasta" },
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "albahaca" },
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "parmesano" },
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "piñones" },
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "ajo" },
-    { _id: new ObjectId(), recipeId: recipeIds.pastaPesto, nombre: "aceite de oliva" },
+    // Pesto Pasta
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "pasta" },
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "basil" },
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "parmesan" },
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "pine nuts" },
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "garlic" },
+    { _id: new ObjectId(), recipeId: recipeIds.pestoPasta, name: "olive oil" },
 
-    // Arepas Rellenas
-    { _id: new ObjectId(), recipeId: recipeIds.arepasRellenas, nombre: "harina de maíz" },
-    { _id: new ObjectId(), recipeId: recipeIds.arepasRellenas, nombre: "queso" },
-    { _id: new ObjectId(), recipeId: recipeIds.arepasRellenas, nombre: "mantequilla" },
-    { _id: new ObjectId(), recipeId: recipeIds.arepasRellenas, nombre: "sal" },
-    { _id: new ObjectId(), recipeId: recipeIds.arepasRellenas, nombre: "hogao" },
+    // Stuffed Arepas
+    { _id: new ObjectId(), recipeId: recipeIds.stuffedArepas, name: "corn flour" },
+    { _id: new ObjectId(), recipeId: recipeIds.stuffedArepas, name: "cheese" },
+    { _id: new ObjectId(), recipeId: recipeIds.stuffedArepas, name: "butter" },
+    { _id: new ObjectId(), recipeId: recipeIds.stuffedArepas, name: "salt" },
+    { _id: new ObjectId(), recipeId: recipeIds.stuffedArepas, name: "hogao" },
 
-    // Sopa de Verduras
-    { _id: new ObjectId(), recipeId: recipeIds.sopaVerduras, nombre: "zanahoria" },
-    { _id: new ObjectId(), recipeId: recipeIds.sopaVerduras, nombre: "apio" },
-    { _id: new ObjectId(), recipeId: recipeIds.sopaVerduras, nombre: "papa" },
-    { _id: new ObjectId(), recipeId: recipeIds.sopaVerduras, nombre: "calabacín" },
-    { _id: new ObjectId(), recipeId: recipeIds.sopaVerduras, nombre: "laurel" },
+    // Vegetable Soup
+    { _id: new ObjectId(), recipeId: recipeIds.vegetableSoup, name: "carrot" },
+    { _id: new ObjectId(), recipeId: recipeIds.vegetableSoup, name: "celery" },
+    { _id: new ObjectId(), recipeId: recipeIds.vegetableSoup, name: "potato" },
+    { _id: new ObjectId(), recipeId: recipeIds.vegetableSoup, name: "zucchini" },
+    { _id: new ObjectId(), recipeId: recipeIds.vegetableSoup, name: "bay leaf" },
 
-    // Arroz con Pollo
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "arroz" },
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "pollo" },
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "zanahoria" },
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "pimentón" },
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "guisantes" },
-    { _id: new ObjectId(), recipeId: recipeIds.arrozPollo, nombre: "cilantro" },
+    // Chicken Rice
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "rice" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "chicken" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "carrot" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "bell pepper" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "peas" },
+    { _id: new ObjectId(), recipeId: recipeIds.chickenRice, name: "cilantro" },
 
-    // Brownies de Chocolate
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "chocolate" },
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "mantequilla" },
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "azúcar" },
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "huevos" },
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "harina" },
-    { _id: new ObjectId(), recipeId: recipeIds.brownies, nombre: "nueces" },
+    // Chocolate Brownies
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "chocolate" },
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "butter" },
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "sugar" },
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "eggs" },
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "flour" },
+    { _id: new ObjectId(), recipeId: recipeIds.brownies, name: "nuts" },
 
-    // Ceviche de Camarón
-    { _id: new ObjectId(), recipeId: recipeIds.cevicheCamaron, nombre: "camarón" },
-    { _id: new ObjectId(), recipeId: recipeIds.cevicheCamaron, nombre: "limón" },
-    { _id: new ObjectId(), recipeId: recipeIds.cevicheCamaron, nombre: "cebolla morada" },
-    { _id: new ObjectId(), recipeId: recipeIds.cevicheCamaron, nombre: "cilantro" },
-    { _id: new ObjectId(), recipeId: recipeIds.cevicheCamaron, nombre: "tomate" },
+    // Shrimp Ceviche
+    { _id: new ObjectId(), recipeId: recipeIds.shrimpCeviche, name: "shrimp" },
+    { _id: new ObjectId(), recipeId: recipeIds.shrimpCeviche, name: "lime" },
+    { _id: new ObjectId(), recipeId: recipeIds.shrimpCeviche, name: "red onion" },
+    { _id: new ObjectId(), recipeId: recipeIds.shrimpCeviche, name: "cilantro" },
+    { _id: new ObjectId(), recipeId: recipeIds.shrimpCeviche, name: "tomato" },
 
-    // Panqueques de Avena
-    { _id: new ObjectId(), recipeId: recipeIds.panquequesAvena, nombre: "avena" },
-    { _id: new ObjectId(), recipeId: recipeIds.panquequesAvena, nombre: "banano" },
-    { _id: new ObjectId(), recipeId: recipeIds.panquequesAvena, nombre: "huevo" },
-    { _id: new ObjectId(), recipeId: recipeIds.panquequesAvena, nombre: "leche" },
-    { _id: new ObjectId(), recipeId: recipeIds.panquequesAvena, nombre: "polvo de hornear" },
+    // Oatmeal Pancakes
+    { _id: new ObjectId(), recipeId: recipeIds.oatmealPancakes, name: "oatmeal" },
+    { _id: new ObjectId(), recipeId: recipeIds.oatmealPancakes, name: "banana" },
+    { _id: new ObjectId(), recipeId: recipeIds.oatmealPancakes, name: "egg" },
+    { _id: new ObjectId(), recipeId: recipeIds.oatmealPancakes, name: "milk" },
+    { _id: new ObjectId(), recipeId: recipeIds.oatmealPancakes, name: "baking powder" },
   ];
 
   await connect();
 
-  await getDB().collection("ingredientes").deleteMany({});
-  await getDB().collection("recetas").deleteMany({});
-  await getDB().collection("usuarios").deleteMany({});
+  await getDB().collection("ingredients").deleteMany({});
+  await getDB().collection("recipes").deleteMany({});
+  await getDB().collection("users").deleteMany({});
 
-  await getDB().collection("usuarios").insertMany(usuarios);
-  await getDB().collection("recetas").insertMany(recetas);
-  await getDB().collection("ingredientes").insertMany(ingredientes);
+  await getDB().collection("users").insertMany(users);
+  await getDB().collection("recipes").insertMany(recipes);
+  await getDB().collection("ingredients").insertMany(ingredients);
 
-  console.log("🆗 Dataset cargado");
+  console.log("🆗 Dataset loaded");
   process.exit(0);
 }
 
 seed().catch((err) => {
-  console.error("Error en seed:", err);
+  console.error("Seed error", err);
   process.exit(1);
 });
