@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import usersRouter from "./routers/usersRouter.js";
 import recipesRouter from "./routers/recipesRouter.js"
-// import ingredientsRouter from "./routers/ingredientsRouter.js"
+import ingredientsRouter from "./routers/ingredientsRouter.js"
 import { connect } from "./db/config.js";
 
 dotenv.config();
@@ -16,7 +16,7 @@ app.use(express.json());
 // Rutas
 app.use("/users", usersRouter);
 app.use("/recipe", recipesRouter);
-// app.use("/ingredients", ingredientsRouter);
+app.use("/ingredients", ingredientsRouter);
 
 //endpoints
 app.get("/api", function (req, res) {
