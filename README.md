@@ -12,10 +12,3 @@ POST
 
 - URL:
 /registeruser
-
-- Ejemplo de request y response:
-´{
-  "fullName": "Juan Pérez",
-  "username": "juanperez",
-  "email": "juan.perez@email.com"
-}´
